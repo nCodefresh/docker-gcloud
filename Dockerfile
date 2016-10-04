@@ -11,8 +11,6 @@ RUN apt-get update && \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN ls -l
-VOLUME /keys
     
 # Install the Google Cloud SDK.
 ENV CLOUDSDK_PYTHON_SITEPACKAGES 1
@@ -39,6 +37,11 @@ RUN sed -i -- 's/\"disable_updater\": false/\"disable_updater\": true/g' /google
 WORKDIR /
 ENV PATH /google-cloud-sdk/bin:$PATH
 COPY docker-entrypoint.sh /
+COPY keys /
+
+RUN ls -l
+VOLUME /keys
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["gcloud"]
  
