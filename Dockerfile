@@ -37,8 +37,8 @@ RUN sed -i -- 's/\"disable_updater\": false/\"disable_updater\": true/g' /google
 WORKDIR /
 ENV PATH /google-cloud-sdk/bin:$PATH
 COPY docker-entrypoint.sh /
-COPY keys/ /
 
+COPY keys /keys
 RUN ls -l
 VOLUME /keys
 
