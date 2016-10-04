@@ -11,7 +11,8 @@ RUN apt-get update && \
     && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-VOLUME keys/
+RUN ls -l
+VOLUME /keys
     
 # Install the Google Cloud SDK.
 ENV CLOUDSDK_PYTHON_SITEPACKAGES 1
