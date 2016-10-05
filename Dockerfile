@@ -12,7 +12,10 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install docker
-RUN apt-get update -qq && apt-get install -qqy \
+RUN wget https://get.docker.com/builds/Linux/x86_64/docker-latest -O /usr/bin/docker \
+	&& chmod +x /usr/bin/docker
+
+#RUN apt-get update -qq && apt-get install -qqy \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -20,19 +23,19 @@ RUN apt-get update -qq && apt-get install -qqy \
     iptables
 
 # Install Docker from Docker Inc. repositories.
-RUN curl -sSL https://get.docker.com/ | sh
+#RUN curl -sSL https://get.docker.com/ | sh
 
 # Install the magic wrapper.
 #ADD ./wrapdocker /usr/local/bin/wrapdocker
 #RUN chmod +x /usr/local/bin/wrapdocker
 
 # Define additional metadata for our image.
-VOLUME /var/lib/docker
+#VOLUME /var/lib/docker
 
 #Install docker-machine
-RUN curl -L https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine
-RUN chmod +x /usr/local/bin/docker-machine
-RUN docker-machine version
+#RUN curl -L https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine
+#RUN chmod +x /usr/local/bin/docker-machine
+#RUN docker-machine version
 
 # Install the Google Cloud SDK.
 ENV CLOUDSDK_PYTHON_SITEPACKAGES 1
