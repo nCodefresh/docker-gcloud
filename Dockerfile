@@ -12,10 +12,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install docker
-RUN wget https://get.docker.com/builds/Linux/x86_64/docker-latest -O /usr/bin/docker \
-	&& chmod +x /usr/bin/docker
-
-#RUN apt-get update -qq && apt-get install -qqy \
+RUN apt-get update -qq && apt-get install -qqy \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -23,7 +20,7 @@ RUN wget https://get.docker.com/builds/Linux/x86_64/docker-latest -O /usr/bin/do
     iptables
 
 # Install Docker from Docker Inc. repositories.
-#RUN curl -sSL https://get.docker.com/ | sh
+RUN curl -sSL https://get.docker.com/ | sh
 
 # Install the magic wrapper.
 #ADD ./wrapdocker /usr/local/bin/wrapdocker
@@ -33,6 +30,8 @@ RUN wget https://get.docker.com/builds/Linux/x86_64/docker-latest -O /usr/bin/do
 #VOLUME /var/lib/docker
 
 #Install docker-machine
+RUN wget https://get.docker.com/builds/Linux/x86_64/docker-latest -O /usr/bin/docker \
+	&& chmod +x /usr/bin/docker
 #RUN curl -L https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine
 #RUN chmod +x /usr/local/bin/docker-machine
 #RUN docker-machine version
