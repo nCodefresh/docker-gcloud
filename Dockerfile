@@ -64,6 +64,6 @@ COPY keys /keys
 RUN ls -l
 VOLUME /keys
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+#ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["gcloud"]
  
