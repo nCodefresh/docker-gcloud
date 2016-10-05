@@ -27,14 +27,12 @@ RUN curl -sSL https://get.docker.com/ | sh
 #RUN chmod +x /usr/local/bin/wrapdocker
 
 # Define additional metadata for our image.
-#VOLUME /var/lib/docker
+VOLUME /var/lib/docker
 
 #Install docker-machine
-RUN wget https://get.docker.com/builds/Linux/x86_64/docker-latest -O /usr/bin/docker \
-	&& chmod +x /usr/bin/docker
-#RUN curl -L https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine
-#RUN chmod +x /usr/local/bin/docker-machine
-#RUN docker-machine version
+RUN curl -L https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine
+RUN chmod +x /usr/local/bin/docker-machine
+RUN docker-machine version
 
 # Install the Google Cloud SDK.
 ENV CLOUDSDK_PYTHON_SITEPACKAGES 1
